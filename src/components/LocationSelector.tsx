@@ -296,7 +296,7 @@ export default function LocationSelector({ currentLang }: LocationSelectorProps)
       window.open(`https://t.me/share/url?url=${encodeURIComponent(googleMapsUrl())}&text=${encodedBody}`, '_blank');
     } else if (channel === 'email') {
       const encodedSubject = encodeURIComponent(subject || '');
-      window.location.href = `mailto:info@mobilebandenservice.be?subject=${encodedSubject}&body=${encodedBody}`;
+      window.location.href = `mailto:krapa2915@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
     } else {
       // Copy to Clipboard
       navigator.clipboard.writeText(body);
@@ -335,7 +335,7 @@ export default function LocationSelector({ currentLang }: LocationSelectorProps)
           
           {/* Left Column (8 cols): Interactive Map */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+            <div className="relative rounded-2xl overflow-hidden border border-[#d4af37] bg-neutral-900 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
               {/* Map Canvas */}
               <div ref={mapRef} className="w-full h-[380px] md:h-[480px] z-10" id="osm-map-canvas" />
 

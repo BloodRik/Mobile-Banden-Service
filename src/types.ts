@@ -9,6 +9,7 @@ export interface TranslationDict {
     contact: string;
     emergency: string;
     blog: string;
+    address: string;
   };
   hero: {
     title: string;
@@ -136,6 +137,7 @@ export const translations: Record<Language, TranslationDict> = {
       contact: 'Contact',
       emergency: 'Spoed 24/7',
       blog: 'Blog',
+      address: 'Adres',
     },
     hero: {
       title: 'Mobile Banden Service',
@@ -312,6 +314,7 @@ export const translations: Record<Language, TranslationDict> = {
       contact: 'Contact',
       emergency: 'Emergency 24/7',
       blog: 'Blog',
+      address: 'Address',
     },
     hero: {
       title: 'Mobile Banden Service',
@@ -488,6 +491,7 @@ export const translations: Record<Language, TranslationDict> = {
       contact: 'Контакты',
       emergency: 'Вызов 24/7',
       blog: 'Блог',
+      address: 'Адрес',
     },
     hero: {
       title: 'Mobile Banden Service',

@@ -54,7 +54,7 @@ export default function Footer({ currentLang }: FooterProps) {
               </div>
               <div className="flex flex-col">
                 <span className="font-sans font-black text-lg leading-tight tracking-wide text-white group-hover:text-[#d4af37] transition-colors">
-                  Mobile Banden
+                  MTS TIRES
                 </span>
                 <span className="font-sans text-xs tracking-widest text-[#d4af37] uppercase font-bold">
                   Service 24/7
@@ -129,9 +129,9 @@ export default function Footer({ currentLang }: FooterProps) {
                 <Phone className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
                 <span className="font-extrabold text-white">+32 479 40 99 29</span>
               </a>
-              <a href="mailto:info@mobilebandenservice.be" className="flex items-center gap-3 hover:text-[#d4af37] transition-colors">
+              <a href="mailto:krapa2915@gmail.com" className="flex items-center gap-3 hover:text-[#d4af37] transition-colors">
                 <Mail className="w-4 h-4 text-[#d4af37]" />
-                <span>info@mobilebandenservice.be</span>
+                <span>krapa2915@gmail.com</span>
               </a>
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-neutral-500" />

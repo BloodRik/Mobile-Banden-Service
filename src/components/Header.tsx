@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Language, translations } from '../types';
 import { Menu, X, PhoneCall, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import AddressModal from './AddressModal';
 
 interface HeaderProps {
   currentLang: Language;
@@ -11,6 +12,7 @@ interface HeaderProps {
 export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAddressOpen, setIsAddressOpen] = useState(false);
   const t = translations[currentLang];
   const headerRef = useRef<HTMLElement>(null);
 
@@ -65,6 +67,7 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
     { id: 'home', label: t.nav.home },
     { id: 'services', label: t.nav.services },
     { id: 'why-us', label: t.nav.about },
+    { id: 'address', label: t.nav.address },
     { id: 'reviews', label: t.nav.reviews },
     { id: 'socials', label: t.nav.blog },
     { id: 'contact', label: t.nav.contact }
@@ -76,7 +79,7 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-black/85 backdrop-blur-md border-b border-neutral-800/80 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+          ? 'bg-black/85 backdrop-blur-md border-b border-neutral-800/80 py-5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
           : 'bg-gradient-to-b from-black/80 to-transparent py-5'
       }`}
     >
@@ -103,7 +106,7 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
             </div>
             <div className="flex flex-col">
               <span className="font-sans font-bold text-lg leading-tight tracking-wide text-white group-hover:text-[#d4af37] transition-colors">
-                Mobile Banden
+                MTS TIRES
               </span>
               <span className="font-sans text-xs tracking-widest text-[#d4af37] uppercase font-semibold">
                 Service 24/7
@@ -116,7 +119,13 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => {
+                  if (item.id === 'address') {
+                    setIsAddressOpen(true);
+                  } else {
+                    scrollToSection(item.id);
+                  }
+                }}
                 className="font-sans text-sm font-medium text-neutral-300 hover:text-white relative py-2 transition-colors after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#d4af37] hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
               >
                 {item.label}
@@ -172,7 +181,14 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => {
+                    if (item.id === 'address') {
+                      setIsAddressOpen(true);
+                      setIsOpen(false);
+                    } else {
+                      scrollToSection(item.id);
+                    }
+                  }}
                   className="block w-full text-left font-sans text-base font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 px-3 py-2 rounded-lg transition-colors cursor-pointer"
                 >
                   {item.label}
@@ -205,6 +221,16 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
               </div>
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Address Information Modal Popup */}
+      <AnimatePresence>
+        {isAddressOpen && (
+          <AddressModal
+            isOpen={isAddressOpen}
+            onClose={() => setIsAddressOpen(false)}
+            currentLang={currentLang}
+          />
         )}
       </AnimatePresence>
     </header>

@@ -35,8 +35,8 @@ export default function Contacts({ currentLang }: ContactsProps) {
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@mobilebandenservice.be',
-      link: 'mailto:info@mobilebandenservice.be',
+      value: 'krapa2915@gmail.com',
+      link: 'mailto:krapa2915@gmail.com',
       color: 'text-[#d4af37]'
     }
   ];
