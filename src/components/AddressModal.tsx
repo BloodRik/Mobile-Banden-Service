@@ -42,15 +42,24 @@ export default function AddressModal({ isOpen, onClose, currentLang }: AddressMo
 
   const t = modalTranslations[currentLang] || modalTranslations.nl;
 
+  const handleOuterClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto"
+      onClick={handleOuterClick}
+    >
       {/* Dark Overlay with blur */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/85 backdrop-blur-md"
       />
 
       {/* Modal Card Container */}
@@ -132,6 +141,7 @@ export default function AddressModal({ isOpen, onClose, currentLang }: AddressMo
               href="https://www.google.com/maps?q=51.067762,4.707531&ll=51.067762,4.707531&z=16"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={onClose}
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#d4af37] hover:bg-yellow-500 text-black font-sans font-bold text-sm uppercase tracking-wider transition-all shadow-lg shadow-yellow-500/10 hover:shadow-yellow-500/20 active:scale-95 text-center"
             >
               <ExternalLink className="w-4 h-4" />

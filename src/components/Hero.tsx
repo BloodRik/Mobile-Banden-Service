@@ -87,7 +87,7 @@ export default function Hero({ currentLang }: HeroProps) {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-4 md:mt-6 font-sans text-lg sm:text-2xl text-neutral-300 font-medium tracking-wide max-w-2xl"
+          className="mt-4 md:mt-6 font-sans text-lg sm:text-2xl text-neutral-200 font-medium tracking-wide max-w-2xl"
           id="hero-subtitle"
         >
           {t.hero.subtitle}
@@ -98,7 +98,7 @@ export default function Hero({ currentLang }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-5 md:mt-8 flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm font-sans font-semibold tracking-wider text-neutral-400 uppercase"
+          className="mt-5 md:mt-8 flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm font-sans font-semibold tracking-wider text-neutral-300 uppercase"
         >
           <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" /> SNEL</span>
           <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" /> BETROUWBAAR</span>
@@ -141,7 +141,7 @@ export default function Hero({ currentLang }: HeroProps) {
 
               {/* Telegram */}
               <a
-                href="https://t.me/32479409929"
+                href="https://t.me/+32479409929"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-1.5 md:gap-2.5 px-3 py-2.5 md:py-4 rounded-full bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs sm:text-base transition-all shadow-lg active:scale-95"

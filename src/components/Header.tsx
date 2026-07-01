@@ -2,17 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Language, translations } from '../types';
 import { Menu, X, PhoneCall, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import AddressModal from './AddressModal';
 
 interface HeaderProps {
   currentLang: Language;
   onLanguageChange: (lang: Language) => void;
+  onOpenAddress: () => void;
 }
 
-export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
+export default function Header({ currentLang, onLanguageChange, onOpenAddress }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isAddressOpen, setIsAddressOpen] = useState(false);
   const t = translations[currentLang];
   const headerRef = useRef<HTMLElement>(null);
 
@@ -121,7 +120,7 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
                 key={item.id}
                 onClick={() => {
                   if (item.id === 'address') {
-                    setIsAddressOpen(true);
+                    onOpenAddress();
                   } else {
                     scrollToSection(item.id);
                   }
@@ -183,7 +182,7 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
                   key={item.id}
                   onClick={() => {
                     if (item.id === 'address') {
-                      setIsAddressOpen(true);
+                      onOpenAddress();
                       setIsOpen(false);
                     } else {
                       scrollToSection(item.id);
@@ -209,8 +208,8 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
                         onClick={() => onLanguageChange(lang)}
                         className={`text-xs px-2.5 py-1 rounded font-bold ${
                           currentLang === lang
-                            ? 'bg-[#d4af37] text-black shadow-md'
-                            : 'bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-white'
+                             ? 'bg-[#d4af37] text-black shadow-md'
+                             : 'bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-white'
                         } transition-all`}
                       >
                         {lang.toUpperCase()}
@@ -221,16 +220,6 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
               </div>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-      {/* Address Information Modal Popup */}
-      <AnimatePresence>
-        {isAddressOpen && (
-          <AddressModal
-            isOpen={isAddressOpen}
-            onClose={() => setIsAddressOpen(false)}
-            currentLang={currentLang}
-          />
         )}
       </AnimatePresence>
     </header>

@@ -136,8 +136,7 @@ export default function Services({ currentLang }: ServicesProps) {
                 key={service.id}
                 variants={cardVariants}
                 whileHover={{ y: -6, scale: 1.01 }}
-                whileTap={{ scale: 0.97 }}
-                className="group relative h-full rounded-2xl border border-neutral-800/80 bg-neutral-900/45 backdrop-blur-md p-8 shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-300 hover:bg-neutral-900/70 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)] cursor-pointer"
+                className="group relative h-full rounded-2xl border border-neutral-800/80 bg-neutral-900/45 backdrop-blur-md p-8 shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-300 md:hover:bg-neutral-900/70 md:hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)] cursor-pointer active:scale-[0.97] active:bg-neutral-900/75 active:border-neutral-700/80 select-none touch-manipulation"
                 id={`service-card-${service.id}`}
               >
                 {/* Accent glow on card hover */}
