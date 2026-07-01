@@ -283,6 +283,8 @@ export default function LocationSelector({ currentLang }: LocationSelectorProps)
     return { body: messageText, subject: t.location.emailSubject };
   };
 
+  const googleMapsUrl = () => `https://www.google.com/maps?q=${lat},${lon}`;
+
   // Action: Launch Transmission to Master
   const handleSendToMaster = (channel: 'whatsapp' | 'telegram' | 'email' | 'copy') => {
     const masterPhone = '32479409929';
@@ -292,14 +294,8 @@ export default function LocationSelector({ currentLang }: LocationSelectorProps)
     if (channel === 'whatsapp') {
       window.open(`https://api.whatsapp.com/send?phone=${masterPhone}&text=${encodedBody}`, '_blank');
     } else if (channel === 'telegram') {
-      // Copy the details to clipboard first so the user can easily paste it into the Telegram chat
-      try {
-        navigator.clipboard.writeText(body);
-      } catch (err) {
-        console.error('Failed to copy text to clipboard', err);
-      }
-      // Open the direct chat with the master on Telegram
-      window.open(`https://t.me/+${masterPhone}`, '_blank');
+      // Open Telegram's native share feature with pre-filled message text and location link
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(googleMapsUrl())}&text=${encodedBody}`, '_blank');
     } else if (channel === 'email') {
       const encodedSubject = encodeURIComponent(subject || '');
       window.location.href = `mailto:krapa2915@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
@@ -311,8 +307,6 @@ export default function LocationSelector({ currentLang }: LocationSelectorProps)
     }
     setShowChannelModal(false);
   };
-
-  const googleMapsUrl = () => `https://www.google.com/maps?q=${lat},${lon}`;
 
   return (
     <section
