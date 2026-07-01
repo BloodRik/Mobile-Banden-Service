@@ -292,8 +292,14 @@ export default function LocationSelector({ currentLang }: LocationSelectorProps)
     if (channel === 'whatsapp') {
       window.open(`https://api.whatsapp.com/send?phone=${masterPhone}&text=${encodedBody}`, '_blank');
     } else if (channel === 'telegram') {
-      // In Telegram web, sharing text via deep link goes to tg://msg or web.telegram share
-      window.open(`https://t.me/share/url?url=${encodeURIComponent(googleMapsUrl())}&text=${encodedBody}`, '_blank');
+      // Copy the details to clipboard first so the user can easily paste it into the Telegram chat
+      try {
+        navigator.clipboard.writeText(body);
+      } catch (err) {
+        console.error('Failed to copy text to clipboard', err);
+      }
+      // Open the direct chat with the master on Telegram
+      window.open(`https://t.me/+${masterPhone}`, '_blank');
     } else if (channel === 'email') {
       const encodedSubject = encodeURIComponent(subject || '');
       window.location.href = `mailto:krapa2915@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
